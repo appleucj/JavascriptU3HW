@@ -1,10 +1,22 @@
 .body{
-    background-color: #ccc;
+    background-color: #e0dcdc;
 }
-
+.mainContainer{
+    padding-bottom:1rem;
+    
+}
 .secret{
     text-align: center;
- 
+    height: 8rem;
     border-radius: 8px;
-    border:0.1rem dotted red;
+    border:0.1rem dotted #cccccc;
+    padding: 1rem;
+}
+
+.button1{
+
+}
+
+.button2{
+    margin-left:5rem;
 }
