@@ -1,9 +1,13 @@
 .body{
-    background-color: #e0dcdc;
+    background-color: #ffffff;
 }
+.head{
+    padding-top: 1rem;
+}
+
 .mainContainer{
     padding-bottom:1rem;
-    
+    padding-top:3rem;
 }
 .secret{
     text-align: center;
