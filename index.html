@@ -13,11 +13,15 @@
         <!-- Head -->
         <div class="row ">
             <div class="col-sm-4">
-                            
+
             </div>
-            <h2 class="head">
-                Password Generator
-            </h2>
+
+            <div class="col-sm-4">
+                <h2 class="head" style="text-align: center;">
+                    Password Generator
+                </h2>
+            </div>
+
             <div class="col-sm-4">
                 
             </div>
@@ -26,40 +30,138 @@
         <!-- main container -->
         <div class="container mainContainer">
             <div class="jumbotron">
-                <h3 >Generate a Password</h3>
-                <hr class="my-4">
-                <p class="secret lead">Your secret password.</p>
-                <hr class="my-4">
-                <div class="row">
-                    <div class="col-sm-2"></div>
-              
-                <button type="button" class="btn btn-danger btn-primary btn-lg">Generate Password</button>
-                <div class="col-sm-2"></div>
+
+                <!-- title -->
+                <h3 style="text-align: center;" >
+                    Generate a Password
+                </h3>
                 
-                  <button type="button" class="btn btn-secondary btn-lg" disabled>Copy to Clipboard</button>
-                  <div class="col-sm-2"></div>
+                <hr class="my-4">
+
+                <!-- message box -->
+                <p class="secret lead" id='password-box' >
+                    Your secrity password
+                </p>
+
+                <hr class="my-4">
+
+                <!-- button -->
+                <div class="row">
+
+                    <div class="col-sm-2"></div>
+                                       
+                    <button type="button" 
+                         class="btn btn-danger btn-lg col-sm-3" 
+                         onclick="getPassWord()">
+                         Generate Password
+                    </button>
+
+                    <div class="col-sm-2"></div>
+
+                    <button type="button"
+                         class="btn btn-secondary btn-lg col-sm-3" 
+                         onclick="copyToClipoard()">
+                         Copy to Clipboard
+                    </button>                
+                      
+                    <div class="col-sm-2"></div>
+
+                </div>
+                    
+                    
+                    
                 </div>
               </div>
-        
-    <script>
-        var length = prompt("Please input the password length.(a number between 8 and 128)");
-        var characterType = prompt("Please input your password character type. (Special, Numeric, Lowercase or Uppercase.");
-        // validate characterType input.
-        function Checker(characterType){
-        var character = ['Special', 'Numeric', 'Lowercase', 'Uppercase'];
-        if (character.indexOf(characterType) !==-1){alert("Invalid input.")}
-        // how to rerun the charactertype prompt here?
-        // how many 
-      }
-
-    
-    </script>
-    
-
-
+              
         </div>
 
+        
+
     </div>
+        
+    <script>
+        
+
+
+//name the function
+        function getPassWord(){
+            
+ //  * Length (must be between 8 and 128 characters)
+        function getPassWordLength() {
+            passWordLength = prompt("Please input the password length.(a number between 8 and 128)");
+            passWordLength = Number(passWordLength)
+            if (passWordLength < 8 || passWordLength > 128) {
+                alert ("Please input a number between 8 to 128.")
+                getPassWordLength();
+            }
+        }
+
+        getPassWordLength();
+        console.log(passWordLength)
+
+//   * Special characters 
+//   * Numeric characters
+//   * Lowercase characters
+//   * Uppercase characters
+        function getCharactersType(){
+        var special = confirm("Will your password includ Special Letter?")
+        var numeric = confirm("Will your password includ Numeric Letter?")
+        var lowercase = confirm("Will your password includ Lowercase Letter?")
+        var uppercase = confirm("Will your password includ Uppercase Letter?")
+// The application should validate user input and ensure that at least one character type is selected.  
+        if ((special === false) && (numeric === false) && (lowercase === false) && (uppercase === false)){
+            alert ("Please selected at least one character type.")
+            getCharactersType();
+        } 
+        }
+        getCharactersType();
+
+// creat the password character's array 
+        var specialArray = ["@","#","$","!","%","&","*",".",",",":",";","=","(",")","[","]","/","^","_","`","{","}","|","|","~"] 
+        var numericArray = ["0","1","2","3","4","5","6","7","8","9"];
+        var lowerCaseArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+        var upperCaseArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+
+        var functionArray = []
+
+        if (special = true) {
+            functionArray.push(...specialArray);
+            } 
+        
+        if (numeric = true) {
+            functionArray.push(...numericArray);
+            }
+
+        if (lowercase = true) {
+           functionArray.push(...lowerCaseArray);
+            }
+
+        if (uppercase = true) {
+           functionArray.push(...upperCaseArray);
+            }
+        
+        
+        var passWord = []
+        var i=0                 
+        while (i<passWordLength){
+        passWord.push(functionArray[Math.floor(Math.random() * (87 - 0) ) + 0]);
+        i++;
+         }
+         console.log(passWord)
+        //pass the named function to the onclick on the button
+         var pwBox = document.getElementById('password-box')
+         pwBox.innerHTML = passWord.toString();}
+               
+        // function clickboard(){
+        
+  
+        
+    </script>
     
+<!--     
+
+As a bonus, the user should also have the option to click a button to copy the password to their clipboard. -->
+
 </body>
+
 </html>
