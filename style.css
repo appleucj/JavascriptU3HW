@@ -14,6 +14,7 @@
     height: 8rem;
     border-radius: 8px;
     border:0.1rem dotted #cccccc;
-    padding: 1rem;
+    padding: 0.1rem;
+    font-size: 1rem;
 }
 
